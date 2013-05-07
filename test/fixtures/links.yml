@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  title: MyString
+  url: MyString
+  parent_unit: 1
+  parent_road: 1
+  url_type: 1
+
+two:
+  title: MyString
+  url: MyString
+  parent_unit: 1
+  parent_road: 1
+  url_type: 1
