@@ -9,7 +9,6 @@
       <th><%= model_class.human_attribute_name(:title) %></th>
       <th><%= model_class.human_attribute_name(:description) %></th>
       <th><%= model_class.human_attribute_name(:parent_road) %></th>
-      <th><%= model_class.human_attribute_name(:created_at) %></th>
       <th><%=t '.actions', :default => t("helpers.actions") %></th>
     </tr>
   </thead>
@@ -17,11 +16,10 @@
     <% @units.each do |unit| %>
       <tr>
         <td><%= link_to unit.id, unit_path(unit) %></td>
-        <td><%= unit.title %></td>
+        <td><%= link_to unit.title, unit_path(unit) %></td>
         <td><%= unit.description %></td>
         <td><%= unit.parent_road %></td>
-        <td><%=l unit.created_at %></td>
-        <td>
+        <td nowrap="nowrap">
           <%= link_to t('.edit', :default => t("helpers.links.edit")),
                       edit_unit_path(unit), :class => 'btn btn-mini' %>
           <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
