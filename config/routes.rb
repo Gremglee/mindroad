@@ -1,4 +1,10 @@
 Mindroad::Application.routes.draw do
+  resources :roads
+
+
+  resources :columns
+
+
   resources :links
 
 
@@ -6,6 +12,8 @@ Mindroad::Application.routes.draw do
 
   root :to => 'units#index'
 
+  match 'roads/:id/map' => 'roads#map'
+ 
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

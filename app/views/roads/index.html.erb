@@ -1,0 +1,35 @@
+<%- model_class = Road -%>
+
+<div class="page-header">
+  <h1><%=t '.title', :default => model_class.model_name.human.pluralize %></h1>
+</div>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th><%= model_class.human_attribute_name(:id) %></th>
+      <th><%= model_class.human_attribute_name(:title) %></th>
+      <th><%= model_class.human_attribute_name(:sector) %></th>
+      <th><%=t '.actions', :default => t("helpers.actions") %></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @roads.each do |road| %>
+      <tr>
+        <td><%= link_to road.id, link_path(road) %></td>
+        <td><%= road.title %></td>
+        <td><%= road.sector %></td>
+        <td>
+          <%= link_to t('.edit', :default => t("helpers.roads.edit")),
+                      edit_road_path(road), :class => 'btn btn-mini' %>
+          <%= link_to t('.destroy', :default => t("helpers.roads.destroy")),
+                      road_path(road),
+                      :method => :delete,
+                      :data => { :confirm => t('.confirm', :default => t("helpers.roads.confirm", :default => 'Are you sure?')) },
+                      :class => 'btn btn-mini btn-danger' %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= link_to 'New road', new_road_path %>

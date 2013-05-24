@@ -1,0 +1,41 @@
+<%= form_for(@column) do |f| %>
+  <% if @column.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@column.errors.count, "error") %> prohibited this column from being saved:</h2>
+
+      <ul>
+      <% @column.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :road_id %><br />
+    <%= f.number_field :road_id %>
+  </div>
+  <div class="field">
+    <%= f.label :index_number_in_road %><br />
+    <%= f.number_field :index_number_in_road %>
+  </div>
+  <div class="field">
+    <%= f.label :first_line %><br />
+    <%= f.number_field :first_line %>
+  </div>
+  <div class="field">
+    <%= f.label :second_line %><br />
+    <%= f.number_field :second_line %>
+  </div>
+  <div class="field">
+    <%= f.label :third_line %><br />
+    <%= f.number_field :third_line %>
+  </div>
+  <div class="field">
+    <%= f.label :fourth_line %><br />
+    <%= f.number_field :fourth_line %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

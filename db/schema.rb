@@ -11,7 +11,18 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130506202941) do
+ActiveRecord::Schema.define(:version => 20130513193545) do
+
+  create_table "columns", :force => true do |t|
+    t.integer  "road_id"
+    t.integer  "index_number_in_road"
+    t.integer  "first_line"
+    t.integer  "second_line"
+    t.integer  "third_line"
+    t.integer  "fourth_line"
+    t.datetime "created_at",           :null => false
+    t.datetime "updated_at",           :null => false
+  end
 
   create_table "links", :force => true do |t|
     t.string   "title"
@@ -21,6 +32,13 @@ ActiveRecord::Schema.define(:version => 20130506202941) do
     t.integer  "url_type"
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
+  end
+
+  create_table "roads", :force => true do |t|
+    t.string   "title"
+    t.integer  "sector"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "units", :force => true do |t|

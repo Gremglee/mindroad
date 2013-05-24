@@ -1,0 +1,15 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Title:</b>
+  <%= @road.title %>
+</p>
+
+<p>
+  <b>Sector:</b>
+  <%= @road.sector %>
+</p>
+
+
+<%= link_to 'Edit', edit_road_path(@road) %> |
+<%= link_to 'Back', roads_path %>

@@ -1,0 +1,34 @@
+<h1>Listing columns</h1>
+
+<table>
+  <tr>
+    <th>Road_id</th>
+    <th>Index number</th>
+    <th>First line</th>
+    <th>Second line</th>
+    <th>Third line</th>
+    <th>Fourth line</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @columns.each do |column| %>
+  <tr>
+    <td><%= column.id %></td>
+    <td><%= column.index_number_in_road %></td>
+    <td><%= column.road_id %></td>
+    <td><%= column.first_line %></td>
+    <td><%= column.second_line %></td>
+    <td><%= column.third_line %></td>
+    <td><%= column.fourth_line %></td>
+    <td><%= link_to 'Show', column %></td>
+    <td><%= link_to 'Edit', edit_column_path(column) %></td>
+    <td><%= link_to 'Destroy', column, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New column', new_column_path %>

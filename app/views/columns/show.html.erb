@@ -1,0 +1,35 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Road_id:</b>
+  <%= @column.road_id %>
+</p>
+
+<p>
+  <b>Index number:</b>
+  <%= @column.index_number_in_road %>
+</p>
+
+<p>
+  <b>First line:</b>
+  <%= @column.first_line %>
+</p>
+
+<p>
+  <b>Second line:</b>
+  <%= @column.second_line %>
+</p>
+
+<p>
+  <b>Third line:</b>
+  <%= @column.third_line %>
+</p>
+
+<p>
+  <b>Fourth line:</b>
+  <%= @column.fourth_line %>
+</p>
+
+
+<%= link_to 'Edit', edit_column_path(@column) %> |
+<%= link_to 'Back', columns_path %>
