@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130513193545) do
+ActiveRecord::Schema.define(:version => 20130607163759) do
 
   create_table "columns", :force => true do |t|
     t.integer  "road_id"
@@ -27,16 +27,22 @@ ActiveRecord::Schema.define(:version => 20130513193545) do
   create_table "links", :force => true do |t|
     t.string   "title"
     t.string   "url"
-    t.integer  "parent_unit"
-    t.integer  "parent_road"
+    t.integer  "unit_id"
+    t.integer  "road_id"
     t.integer  "url_type"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "roads", :force => true do |t|
     t.string   "title"
-    t.integer  "sector"
+    t.integer  "sector_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "sectors", :force => true do |t|
+    t.string   "title"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
@@ -44,7 +50,7 @@ ActiveRecord::Schema.define(:version => 20130513193545) do
   create_table "units", :force => true do |t|
     t.string   "title"
     t.text     "description"
-    t.integer  "parent_road"
+    t.integer  "road_id"
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
   end

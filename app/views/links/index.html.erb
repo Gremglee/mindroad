@@ -8,8 +8,8 @@
       <th><%= model_class.human_attribute_name(:id) %></th>
       <th><%= model_class.human_attribute_name(:title) %></th>
       <th><%= model_class.human_attribute_name(:url) %></th>
-      <th><%= model_class.human_attribute_name(:parent_unit) %></th>
-      <th><%= model_class.human_attribute_name(:parent_road) %></th>
+      <th><%= model_class.human_attribute_name(:unit_id) %></th>
+      <th><%= model_class.human_attribute_name(:road_id) %></th>
       <th><%= model_class.human_attribute_name(:url_type) %></th>
       <th><%= model_class.human_attribute_name(:created_at) %></th>
       <th><%=t '.actions', :default => t("helpers.actions") %></th>
@@ -21,8 +21,8 @@
         <td><%= link_to link.id, link_path(link) %></td>
         <td><%= link.title %></td>
         <td><%= link.url %></td>
-        <td><%= link.parent_unit %></td>
-        <td><%= link.parent_road %></td>
+        <td><%= link.unit_id %></td>
+        <td><%= link.road_id %></td>
         <td><%= link.url_type %></td>
         <td><%=l link.created_at %></td>
         <td>

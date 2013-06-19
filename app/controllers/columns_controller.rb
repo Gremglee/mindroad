@@ -84,6 +84,32 @@ class ColumnsController < ApplicationController
     end
   end
 
+  def delete_unit
 
+    @column = Column.find(params[:id])
     
+    if @column.first_line.to_s == params[:unit_id]
+      @column.update_attributes(:first_line => '0')
+    end
+    if @column.second_line.to_s == params[:unit_id]
+      @column.update_attributes(:second_line => '0')
+    end
+    if @column.third_line.to_s == params[:unit_id]
+      @column.update_attributes(:third_line => '0')
+     end
+    if @column.fourth_line.to_s == params[:unit_id]
+      @column.update_attributes(:fourth_line => '0')
+    end
+
+    @column.save
+
+    if @column.errors.empty?
+      flash[:notice] = 'unit with id=' + params[:unit_id].to_s + ' has been removed from this map'
+      redirect_to map_road_path(:id => @column.road_id)
+    else
+      render "edit"
+    end
+
+  end
+
 end

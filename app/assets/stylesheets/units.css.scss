@@ -1,3 +1,18 @@
 // Place all the styles related to the Units controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.dl-horizontal {
+	display: inline-table;
+	margin-left: 35%;
+	margin-right: auto;
+}	
+
+.btn-group {
+	float: right;
+	vertical-align: top;
+}
+
+.page-header {
+	display: block;
+}

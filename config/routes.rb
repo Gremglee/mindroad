@@ -1,8 +1,14 @@
 Mindroad::Application.routes.draw do
-  resources :roads
+  resources :sectors
 
 
-  resources :columns
+  resources :roads do
+    get :map, on: :member, :as => :map
+  end 
+
+  resources :columns do
+    put 'delete_unit', :on => :member, :as => :delete_unit
+  end
 
 
   resources :links
@@ -12,7 +18,7 @@ Mindroad::Application.routes.draw do
 
   root :to => 'units#index'
 
-  match 'roads/:id/map' => 'roads#map'
+  #match 'roads/:id/map' => 'roads#map', :as => :map
  
   # The priority is based upon order of creation:
   # first created -> highest priority.

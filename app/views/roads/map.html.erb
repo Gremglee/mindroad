@@ -1,53 +1,65 @@
-<style type="text/css">
-   .unit1 { 
-    width: 223px; 
-	height:53px;
-    background: #ccc;
-    padding: 0px;
-    margin-top: 30px;
-    margin-left: 30px;
-    border: solid 1px black; 
-    float: top;
-   }
-   .unit2 { 
-    width: 223px;
-	height:53px;
-    background: #fc0; 
-    padding: 0px; 
-    margin-top: 30px;
-    margin-bottom: 30px;
-    margin-left: 30px;
-    border: solid 1px black; 
-    float: top;
-   }
-	
-</style> 
+<%- model_class = Road -%>
+
+<script src="baron.js"></script>
+<%= stylesheet_link_tag "baron", :media => "all" %>
 
 <div class='page-header'>
   <h3>Road: Введение в Ruby on Rails<h3>
 </div>
 
-<div class="container-fluid">
-	<div class="row-fluid" style="background: #eee ; ">
+<div class="scroll">
 
-	  <div class="span2"></div>
-	  <div class="span10">
+  <div class="scroll_child">
 
-		<div style="display: block; ">
    		    <% @road_columns.each do |column| %>
 
-		      <div style="float: left; ">
+		      <div class='column'>
+            
 		        <%= raw check_unit(column.first_line, "first_line", column.road_id, column.id) %>
 		        <%= raw check_unit(column.second_line, "second_line", column.road_id, column.id) %>
 		        <%= raw check_unit(column.third_line, "third_line", column.road_id, column.id) %>
 		        <%= raw check_unit(column.fourth_line, "fourth_line", column.road_id, column.id) %>
+            
 		      </div>
+       
 
-		    <% end %>
-		</div>
+		      <% end %>
 
-	  </div>
-
+          <div class="scroller__track"><!-- Track is optional -->
+            <div class="scroller-bar"></div>
+          </div>
 
 	</div>
 </div>
+
+
+
+<script type="text/javascript">
+
+
+
+  $(document).ready(function(){
+
+      //Количество элементов div находящихся внутри дочернего Div "<div class="scroll_child">"
+      var quantity=$(".scroll_child div").size();
+
+      //Общая длинна всех элементов
+      var widthScroll=0;
+      for (i=0;i<quantity;i++){
+        widthScroll+=$(".scroll_child div:eq("+i+")").width();
+      }
+
+      //Установка ширины дочернего Div "<div class="scroll_child">"
+      $(".scroll_child").width(widthScroll);
+
+      $('.scroll_child').baron();
+
+      baron({
+        direction: 'h'
+      });
+
+  });
+
+</script>
+
+

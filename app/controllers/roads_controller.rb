@@ -90,30 +90,29 @@ class RoadsController < ApplicationController
   end
 
   def delete_unit
-    @column_pre = Column.where(:id => params[:id]).write_attribute(params[:line], '0')
+    @column_pre = Column.find(params[:id])
 
-    debug @column_pre
-
-    @column_pre.each do |c|
-      if c.first_line == params[:unit_id]
-        c.update_attribute('first_line', '0')
-      end
-      if c.second_line == params[:unit_id]
-        c.update_attribute('second_line', '0')
-      end
-      if c.third_line == params[:unit_id]
-        c.update_attribute('third_line', '0')
-      end
-      if c.fourth_line == params[:unit_id]
-        c.update_attribute('fourth_line', '0')
-      end
+    if @column_pre.first_line == params[:unit_id]
+      @column_pre.update_column(:first_line, '0')
+    end
+    if @column_pre.second_line == params[:unit_id]
+      @column_pre.update_attribute('second_line', '0')
+    end
+    if @column_pre.third_line == params[:unit_id]
+      @column_pre.update_attribute('third_line', '0')
+     end
+    if @column_pre.fourth_line == params[:unit_id]
+      @column_pre.update_attribute('fourth_line', '0')
     end
     
-    debug @column_pre
-    respond_to do |format|
-     format.html { redirect_to :controller => "roads", :action => "map", :id => params[:unit_id] }
-     format.json
+    save
+    
+    if @column_pre.errors.empty?
+      redirect_to map_url(:id => unit_id)
+    else
+      render "edit"
     end
+    
   end
 
 end

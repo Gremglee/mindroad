@@ -14,7 +14,7 @@ class UnitsController < ApplicationController
   # GET /units/1.json
   def show
     @unit = Unit.find(params[:id])
-    @links = Link.where(:parent_unit => params[:id])
+    @links = Link.where(:unit_id => params[:id])
 
     respond_to do |format|
       format.html # show.html.erb

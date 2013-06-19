@@ -1,69 +1,109 @@
 <%- model_class = Unit -%>
+
 <div class="page-header">
-  <h1><%=t '.title', :default => model_class.model_name.human %></h1>
+
+  <dl class="dl-horizontal">
+    <dt><strong>Сектор:</strong></dt>
+    <dd><%= @unit.road.sector.title %></dd>
+    <dt><strong>Курс:</strong></dt>
+    <dd><%= @unit.road.title %></dd>
+    <dt><strong>Юнит:</strong></dt>
+    <dd><%= @unit.title %></dd>
+  </dl>
+
+  <div class="btn-group btn-group-vertical">
+    <%= link_to t('.edit', :default => t("helpers.links.edit")),
+                edit_unit_path(@unit), :class => 'btn' %>
+    <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+                unit_path(@unit),
+                :method => 'delete',
+                :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Вы уверены?')) },
+                :class => 'btn btn-danger' %>
+  </div>
+
 </div>
 
-<dl class="dl-horizontal">
-  <dt><strong><%= model_class.human_attribute_name(:title) %>:</strong></dt>
-  <dd><%= @unit.title %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:description) %>:</strong></dt>
-  <dd><%= @unit.description %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:parent_road) %>:</strong></dt>
-  <dd><%= @unit.parent_road %></dd>
-</dl>
+<div>
+  <ul class="nav nav-tabs">
+    <li><a                href="#recommended" data-toggle="tab">    Рекомендуемые   </a></li>
+    <li class="active"><a href="#articles" data-toggle="tab">       Статьи          </a></li>
+    <li><a                href="#videos" data-toggle="tab">         Видео           </a></li>
+    <li><a                href="#books" data-toggle="tab">          Книги           </a></li>
+    <li><a                href="#courses" data-toggle="tab">        Курсы           </a></li>
+    <li><a                href="#shop" data-toggle="tab">           Магазин         </a></li>
+  </ul>
 
-<div class="form-actions">
-  <%= link_to t('.back', :default => t("helpers.links.back")),
-              units_path, :class => 'btn'  %>
-  <%= link_to t('.edit', :default => t("helpers.links.edit")),
-              edit_unit_path(@unit), :class => 'btn' %>
-  <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
-              unit_path(@unit),
-              :method => 'delete',
-              :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
-              :class => 'btn btn-danger' %>
+  <div class="tab-content">
+    <div class="tab-pane"         id="recommended"  >...</div>
+    <div class="tab-pane active"  id="articles"     >
+    <% if @links.count != 0 %>
+    <h1>Links</h1>
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th><%= model_class.human_attribute_name(:id) %></th>
+          <th><%= model_class.human_attribute_name(:title) %></th>
+          <th><%= model_class.human_attribute_name(:url) %></th>
+          <th><%= model_class.human_attribute_name(:url_type) %></th>
+          <th><%=t '.actions', :default => t("helpers.actions") %></th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <% @links.each do |link| %>
+        <tr>
+          <td><%= link_to link.id, link_path(link) %></td>
+          <td><%= link.title %></td>
+          <td><%= link.url %></td>
+          <td><%= link.url_type %></td>
+          <td>
+          <%= button_to t('.edit'),
+                      edit_link_path(link), :class => 'btn btn-mini' %>
+
+          <%= button_to t('.destroy'),
+                      link_path(link),
+                      :method => :delete,
+                      :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Вы уверены?')) },
+                      :class => 'btn btn-mini btn-danger' %>
+          </td>
+        </tr>
+        <% end %>
+      </tbody>
+    </table>
+
+
+
+  <% else %>
+
+    <h4> --- There are no any links here now --- </h4>
+
+  <% end %>
+
+  <%# End of tab %>
+
 </div>
+    <div class="tab-pane"         id="videos"       >...</div>
+    <div class="tab-pane"         id="books"        >...</div>
+    <div class="tab-pane"         id="courses"      >...</div>
+    <div class="tab-pane"         id="shop"         >...</div>
+  </div>
 
-<% if @links.count != 0 %>
-  <h1>Links</h1>
-  <table class="table table-striped">
-    <thead>
-      <tr>
-        <th><%= model_class.human_attribute_name(:id) %></th>
-        <th><%= model_class.human_attribute_name(:title) %></th>
-        <th><%= model_class.human_attribute_name(:url) %></th>
-        <th><%= model_class.human_attribute_name(:url_type) %></th>
-        <th><%=t '.actions', :default => t("helpers.actions") %></th>
-      </tr>
-    </thead>
+  
 
-    <tbody>
-      <% @links.each do |link| %>
-      <tr>
-        <td><%= link_to link.id, link_path(link) %></td>
-        <td><%= link.title %></td>
-        <td><%= link.url %></td>
-        <td><%= link.url_type %></td>
-        <td>
-        <%= link_to t('.edit', :default => t("helpers.links.edit")),
-                    edit_link_path(link), :class => 'btn btn-mini' %>
-        <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
-                    link_path(link),
-                    :method => :delete,
-                    :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
-                    :class => 'btn btn-mini btn-danger' %>
-        </td>
-      </tr>
-      <% end %>
-    </tbody>
-  </table>
 
-<% else %>
-
-  <h4> --- There are no any links here now --- </h4>
-
-<% end %>
+</div>
 
 <%= link_to t('.new', :default => t("helpers.links.new")),
             new_link_path,
             :class => 'btn btn-primary' %>
+
+<script type="text/javascript">
+  $(document).ready(function(){
+
+    $('#articles a').click(function (e) {
+      e.preventDefault();
+      $(this).tab('show');
+    })
+
+  }
+</script>

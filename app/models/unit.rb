@@ -1,5 +1,7 @@
 class Unit < ActiveRecord::Base
-  attr_accessible :description, :parent_road, :title
+  attr_accessible :description, :road_id, :title
+  
   has_many :links
-  belongs_to :roads
+  belongs_to :road
+  belongs_to :column
 end

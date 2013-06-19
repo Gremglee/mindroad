@@ -2,7 +2,22 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-div.unit4 {
+div {
+	display: block;
+}
+
+.scroll {
+    width:90%;
+    height:500px;
+    overflow-x:scroll;
+    overflow-y:hidden;
+  }
+
+.scroll_child {
+    width:99999px;
+  }
+
+div.unit {
 	background: #fff;
 	float: top;
 	margin: 25px 12.5px 25px 12.5px;
@@ -20,10 +35,21 @@ div.unit4 {
     -ms-user-select: none;
     user-select: none;
 	box-shadow: 0 1px #FFFFFF inset, 0 1px 3px rgba(34, 25, 25, 0.4)
-
 }
 
 .road {
-    background: #aaa;
+	position: relative;
+	padding: 30px 30px 40px;
+	height: 498px;
+	background: #326496;
+	overflow: hidden;
+	display: block; 
+	float: left; 
+
+}
+
+.column {
+	float: left;
+	display: inline;
 }
 
