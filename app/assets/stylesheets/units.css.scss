@@ -16,3 +16,40 @@
 .page-header {
 	display: block;
 }
+
+.tab-content {
+	width: 50%;
+	float: left;
+
+}
+
+.comment-tab {
+	width: 45%;
+	float: right;
+
+}
+
+.main_page {
+	overflow:hidden;
+	display:block;
+}
+
+.sub-footer {
+	clear: both;
+	width: 90%;
+	margin-top: 100px;
+}
+
+.comment {
+	background-image: url(images/squairy_light.png);
+	padding: 10px;
+	border-radius: 2px 2px 2px 2px;
+	border: 1px;
+	-webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+	box-shadow: 0 1px #FFFFFF inset, 0 1px 3px rgba(34, 25, 25, 0.4)
+}

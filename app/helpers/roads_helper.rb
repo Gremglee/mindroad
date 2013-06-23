@@ -5,12 +5,12 @@ module RoadsHelper
       
       @text_str = link_to Unit.find(unit_id).title, unit_path(unit_id)
 
-      @link_delete = link_to "del", delete_unit_column_path(:id => id, :unit_id => unit_id), 
+      @link_delete = link_to "&times;".html_safe, delete_unit_column_path(:id => id, :unit_id => unit_id), 
                       :data => {:confirm => 'Are you sure?'},
                       :id => id,
                       :method => :put,
       								:action => :delete_unit,
-                    	:class => 'btn btn-mini btn-danger',
+                    	:class => 'close',
                       :unit_id => unit_id
 
 

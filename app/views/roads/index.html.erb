@@ -8,7 +8,7 @@
     <tr>
       <th><%= model_class.human_attribute_name(:id) %></th>
       <th><%= model_class.human_attribute_name(:title) %></th>
-      <th><%= model_class.human_attribute_name(:sector) %></th>
+      <th><%= model_class.human_attribute_name(:sector_id) %></th>
       <th><%=t '.actions', :default => t("helpers.actions") %></th>
     </tr>
   </thead>
@@ -17,7 +17,7 @@
       <tr>
         <td><%= link_to road.id, link_path(road) %></td>
         <td><%= road.title %></td>
-        <td><%= road.sector %></td>
+        <td><%= road.sector_id %></td>
         <td>
           <%= link_to t('.edit', :default => t("helpers.roads.edit")),
                       edit_road_path(road), :class => 'btn btn-mini' %>
